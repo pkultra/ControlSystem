@@ -2,13 +2,6 @@ import numpy as np
 import sys
 from scipy.linalg import toeplitz
 
-def poly(poles):
-    c = np.zeros(poles.size+1, dtype=np.complex_)
-    c[0] = 1
-    for i in range(0,poles.size):
-        c[1:(i+2)] = c[1:(i+2)] - poles[i]*c[0:(i+1)]
-    return c
-
 def ClController(a, b, poles, controllerType):
 	supportTypes = ['proper', 'strictly_proper', 'proper_integral_action', 'strictly_proper_integral_action']
 	if not controllerType in supportTypes:
@@ -33,7 +26,7 @@ def ClController(a, b, poles, controllerType):
 	if a.size < b.size:
 		sys.exit('Plant P(s) is not proper, i.e., its numerator polynomial has higher order than the denominator polynomial.')
 
-	c = poly(poles)
+	c = np.poly(poles)
 	numCfCoefficients = c.size
 
 	a_bar = np.concatenate((a, np.zeros(numCfCoefficients - a.size, dtype=np.complex_)))
