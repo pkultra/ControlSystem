@@ -4,8 +4,8 @@ import control
 import matplotlib.pyplot as plt
 
 # %% Creating model:
-num = np.array([8,8])
-den = np.array([1, 6, 8])
+num = np.poly([-3, -5])
+den = np.poly([-2,-4,-6])
 H = control.tf(num, den)
 
 # %% Defining signals:
