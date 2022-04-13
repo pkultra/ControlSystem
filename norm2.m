@@ -15,8 +15,8 @@ T3 = getSubTable(4, T3);
 
 alpha = T1(1:end-1, 1)./T1(2:end, 1);
 beta = zeros(numel(alpha), 1);
-beta(1:2:end) = T2(1:2:end-1, 1)./T1(2:2:end-1, 1);
-beta(2:2:end) = T3(2:2:end-1, 1)./T1(3:2:end-1, 1);
+beta(1:2:end) = T2(1:2:end-1, 1)./T1(2:2:end, 1);
+beta(2:2:end) = T3(2:2:end-1, 1)./T1(3:2:end, 1);
 
 y = sqrt(sum(beta.^2./alpha/2));
 
